@@ -23,9 +23,9 @@
 
 [SQL-скрипт 1](./4-scripts-task/1.sql)
 
-[SQL-скрипт 2](./4-scripts-task/1.sql)
+[SQL-скрипт 2](./4-scripts-task/2.sql)
 
-[SQL-скрипт 3](./4-scripts-task/1.sql)
+[SQL-скрипт 3](./4-scripts-task/3.sql)
 
 ### Архитектура сервиса
 
