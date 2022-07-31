@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Requests REST API
+  description: Some description
+  version: 0.0.1
+servers:
+  - url: some url
+    description: some description
+paths:
+  "/request/register":
+    post:
+      summary: "Add a new request"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/request'
+      responses:
+        "201":
+          description: "Created"
+        "500":
+          description: "Internal server error"
+  "/request/{id}":
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Request identifier
+        schema:
+          type: string
+    put:
+      summary: "Update request"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/request'
+      responses:
+        "200":
+          description: "Updated successfully"
+        "500":
+          description: "Internal server error"
+  "/requests":
+    get:
+      summary: "List of requests"
+      responses:
+        "200":
+          description: "List of requests"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/request'
+        "401":
+          description: "User not authorized"
+        "500":
+          description: "Internal server error"
+  "/requests/{id}":
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Model identifier
+        schema:
+          type: string
+    get:
+      summary: "List of requests"
+      responses:
+        "200":
+          description: ".ifczip or .rvt file"
+          content:
+            application/octet-stream:
+              schema:
+                type: object
+                $ref: '#/components/schemas/request'
+        "401":
+          description: "User not authorized"
+        "500":
+          description: "Internal server error"
+components:
+  schemas:    
+    request:
+      type: object
+      properties:
+        requestId:
+          type: string
+        requestName:
+          type: string
+        someOtherProp:
+          type: string
+    contract:
+      type: object
+      properties:
+        contractId:
+          type: string
+        contractName:
+          type: string
+        someOtherProp:
+          type: string  
